@@ -17,7 +17,6 @@ class blogcontroler {
     static async createBlog(req, res) {
         const { title, description, image } = req.body;
         const newBlog = new blog({ title, description, image });
-        const newblogs = { title, description, image };
         try {
             await newBlog.save();
             res.status(201).json({
@@ -31,7 +30,36 @@ class blogcontroler {
             })
         }
     }
+    static async deleteBlog(req, res) {
+        const id = req.params.id;
+        console.log(req.params.id);
+        try{
+    const deleteItem = await blog.findOneAndDelete({_id: id})
+    if(!deleteItem){
+        res.send(400).json({
+            message:`blog with id:${id} is not found`
+        })
+    }else{
+        res.status(200).json({
+            message: "blog deleted successful"
+        })
+    }
+        }catch(error){
+            res.status(400).json({
+                error:error
+            })
+        }
+    }
 
+    static async editBlog(req,res){
+try{
+//    const id = req.params.id;
+//    const { title,description,image } = req.body
+//    const edit = findAndUpdate({_id: id,{title,description,image})
+}catch(error){
+
+}
+    }
 }
 
 export default blogcontroler
