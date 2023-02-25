@@ -3,17 +3,22 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import dotenv  from 'dotenv';
 import allRoutes from './routes/all.routes.js'
+import cors from 'cors'
 
 const app = express();
 dotenv.config();
+app.use(cors());
+app.use(bodyParser.json())
+app.use(allRoutes);
+
 const port = process.env.PORT;
 mongoose.set('strictQuery', true);
 
+const con = () => mongoose.connect(`${process.env.MONGODBURL}`,{useNewUrlParser:true,useUnifiedTopology:true});
+const listen = () => app.listen(port)
 
-mongoose.connect(`mongodb+srv://${process.env.DBUSERNAME}:${process.env.DBPASSCODE}@cluster0.hxne8xj.mongodb.net/my-brand-back-end`,{useNewUrlParser:true,useUnifiedTopology:true})
-.then(() => {
-app.use(bodyParser.json())
-app.use(allRoutes);
-console.log("connected succefull")})
-.catch(err => console.err("unable to connect",err));
-app.listen(port, () => console.log(`server running at http://localhost:${port}`))
+Promise.all([con(),listen()])
+.then(() =>{
+    console.log(`mongodb connected and app lisening at http://localhost:${port}`)
+})
+.catch((error) =>console.log(error))

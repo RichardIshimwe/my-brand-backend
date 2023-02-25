@@ -1,6 +1,10 @@
 import mongoose from 'mongoose';
 
 const blogsSchema = new mongoose.Schema({
+    author:{
+     type: String,
+     required: true
+    },
     title:{
         type: String,
         required: true
@@ -12,9 +16,12 @@ const blogsSchema = new mongoose.Schema({
     image:{
         type: String,
         required: true
+    },
+    createdAt:{
+      type:Date,
+      default: Date.now
     }
 })
 const blog = mongoose.model('blogs',blogsSchema);
 
 export default blog;
-
