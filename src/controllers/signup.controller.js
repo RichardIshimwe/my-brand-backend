@@ -1,44 +1,33 @@
 import signup from '../models/signup.models.js'
 import bcrypt from 'bcrypt'
+import response from '../utils/response.util.js';
 
 class signupControllers {
-   static async signupUser(req,res){
-   try{
-  const { email,username,password,confirmPassword } = req.body;
-  const salt = bcrypt.genSaltSync(10);
-  const passwordHashed = bcrypt.hashSync(password,salt);
-  let passwordMatch = bcrypt.compareSync(confirmPassword, passwordHashed);
-  const newUser = new signup({ email,username,password:passwordHashed });
-  if(passwordMatch){
-  await newUser.save()
-  res.status(201).json({
-    mesage: "signup complete",
-    data:newUser
-  })
-  }else{
-    res.status(400).json({
-      message: "password and confirm password does not match"
-    })
+  static async signupUser(req, res) {
+    try {
+      const { email, username, password, confirmPassword } = req.body;
+      const salt = bcrypt.genSaltSync(10);
+      const passwordHashed = bcrypt.hashSync(password, salt);
+      let passwordMatch = bcrypt.compareSync(confirmPassword, passwordHashed);
+      const newUser = new signup({ email, username, password: passwordHashed });
+      if (passwordMatch) {
+        await newUser.save()
+        response.success(res, 201, "signup complete", newUser);
+      } else {
+        response.error(res, 400, "password and confirm password does not match");
+      }
+    } catch (error) {
+      return response.error(res, 400, "internal server error");
+    }
   }
-   }catch(error){
-    res.status(400).json({
-     message:error
-    })
-   }
-   }
-   static async allUsers(req, res) {
+  static async allUsers(req, res) {
     try {
       let allUser = await signup.find();
-      res.status(200).json({
-        message:`all users are ${allUser.length}`,
-        allUser:allUser
-      })
+      response.success(res, 200, `all users are ${allUser.length}`, allUser);
     } catch (error) {
-      res.status(500).json({
-        error:"unable to get users"
-      })
+      return response.error(res, 500, "internal server error");
     }
-   }
+  }
 }
 
 export default signupControllers

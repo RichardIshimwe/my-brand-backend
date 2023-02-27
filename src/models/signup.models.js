@@ -1,30 +1,30 @@
 import mongoose from 'mongoose';
 
 const signupSchema = new mongoose.Schema({
-    email:{
+    email: {
         type: String,
         required: true,
         unipue: true,
-        match:/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
+        match: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
     },
-    username:{
+    username: {
         type: String,
         required: true
     },
-    password:{
+    password: {
         type: String,
         required: true,
-        minLength:8
+        minLength: 8
     },
-    createdAt:{
-       type: Date,
-       default: Date.now
+    createdAt: {
+        type: Date,
+        default: Date.now
     },
-    admin:{
+    admin: {
         type: Boolean
     }
 })
 
-const signup = mongoose.model('signups',signupSchema);
+const signup = mongoose.model('signups', signupSchema);
 
 export default signup
