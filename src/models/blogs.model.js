@@ -3,7 +3,6 @@ import mongoose from 'mongoose';
 const blogsSchema = new mongoose.Schema({
     author:{
      type: String,
-     required: true
     },
     title:{
         type: String,
@@ -17,10 +16,13 @@ const blogsSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    comments:{
+     type:Array
+    },
     createdAt:{
       type:Date,
       default: Date.now
-    }
+    },
 })
 const blog = mongoose.model('blogs',blogsSchema);
 

@@ -1,9 +1,10 @@
-import express from 'express';
-import messageController from '../controllers/message.controllers.js'
+// import express from 'express';
+// import messageController from '../controllers/message.controller.js'
+// import verifyUser from '../middlewares/verifyUser.middleware.js'
 
-const router = express.Router();
+// const router = express.Router();
 
-router.post('/', messageController.sendMessage)
-router.get('/', messageController.displayMessage)
+// router.post('/', messageController.sendMessage)
+// router.get('/', messageController.displayMessage)
 
-export default router
+// export default router

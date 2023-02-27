@@ -1,101 +1,83 @@
 import blog from '../models/blogs.model.js'
 import dotenv from 'dotenv'
+import jwt from 'jsonwebtoken'
 import cloudinary from 'cloudinary'
-dotenv.config();
-cloudinary.config({
-   cloud_name: `${process.env.CLOUD_NAME}`,
-   api_key: `${process.env.API_KEYD}`,
-   api_secret: `${process.env.API_SECRET}`
-});
+import response from '../utils/response.util.js'
+
 class blogcontroler {
-   
-   static async singleBlog(req, res){
-    try{
-        const { id } = req.params
-        const singleBlog = await blog.findOne({ _id:id });
-        if(!singleBlog){
-            return res.status(404).json({
-                message:`The blog with id:${id} is not found`
-            })
+
+    static async singleBlog(req, res) {
+        try {
+            const { id } = req.params
+            const singleBlog = await blog.findOne({ _id: id });
+            if (!singleBlog) {
+                return response.error(res, 404, `The blog with id:${id} is not found`)
+            }
+            response.success(res, 200, "The blog was found", singleBlog);
+        } catch (error) {
+            return response.error(res, 500, error)
         }
-        res.status(200).json({
-            message:"the blog was found",
-            data:singleBlog
-        })
-    }catch(error){
-        res.status(500).json({error:error})
     }
-   }
 
     static async displayBlogs(req, res) {
         try {
             const blogs = await blog.find();
-            res.status(200).json({
-                message: `The blogs available are:${blogs.length}`,
-                blogs: blogs
-            })
+            response.success(res, 200, `All blogs available are:${blogs.length}`, blogs)
         } catch (error) {
-            res.status(400).json({
-                error: error
-            });
+            return response(res, 500, error);
         }
     }
 
     static async createBlog(req, res) {
-     
-     const { author, title, description } = req.body;
-     cloudinary.uploader.upload(req.file.path, async (result,err) =>{
-       if(result){
+        const { token } = req.cookies;
+        const decoded = jwt.verify(token, process.env.SECRET_KEY);
+        const { username } = decoded;
+        dotenv.config();
+        cloudinary.config({
+            cloud_name: `${process.env.CLOUD_NAME}`,
+            api_key: `${process.env.API_KEYD}`,
+            api_secret: `${process.env.API_SECRET}`
+        })
         try {
-            const newBlog = new blog({ author, title, description, image: result.url});
-            await newBlog.save();
-             res.status(200).json({
-                 newBlog:newBlog,
-             })
+            const { title, description } = req.body
+            const blogs = await blog.find();
+            const id = blogs.length;
+            cloudinary.uploader.upload(req.file.path, async (result, err) => {
+                if (!result) {
+                    return response.error(res, 500, err);
+                }
+                const newBlog = await blog.create({ id, author: username, title, description, image: result.url })
+                response.success(res, 200, "blog created successfuly", newBlog)
+            });
         } catch (error) {
-            res.status(404).json({
-                error:error});
+            return response.error(res, 500, "internal server error")
         }
-       }
-     });
     }
     static async deleteBlog(req, res) {
         const id = req.params.id;
-        console.log(req.params.id);
-        try{
-    const deleteItem = await blog.findOneAndDelete({_id: id})
-    if(!deleteItem){
-        res.send(400).json({
-            message:`blog with id:${id} is not found`
-        })
-    }else{
-        res.status(200).json({
-            message: "blog deleted successful"
-        })
-    }
-        }catch(error){
-            res.status(400).json({
-                error:error
-            })
+        try {
+            const deleteItem = await blog.findOneAndDelete({ _id: id })
+            if (!deleteItem) {
+                return response.error(res, 400, `blog with id:${id} is not found`)
+            }
+            response.success(res, 200, "blog deleted successful")
+        } catch (error) {
+            return response.error(res, 500, error);
         }
     }
 
-    static async editBlog(req,res){
-try{
-const { title,description } = req.body;
-const { id } = req.params;
-const _id = id;
-const blogUpdated = await blog.findByIdAndUpdate(_id,{ title,description },{new: true});
-res.status(200).json({
-    message:"blog edited successful",
-    data:blogUpdated,
-    id:id
-})
-}catch(error){
-      res.status(500).json({
-        error:error
-      })
-}
+    static async editBlog(req, res) {
+        try {
+            const { title, description } = req.body;
+            const { id } = req.params;
+            const blogUpdated = await blog.findByIdAndUpdate({ _id: id }, { title, description }, { new: true });
+            if (!blogUpdated) {
+                return response.error(res, 400, `the blog with id:${id} is not found.`)
+            }
+            response.success(res, 200, "blog edited successful", blogUpdated);
+        } catch (error) {
+            return response.error(res, 500, error)
+        }
     }
 }
 

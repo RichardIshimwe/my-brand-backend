@@ -4,12 +4,15 @@ import mongoose from 'mongoose';
 import dotenv  from 'dotenv';
 import allRoutes from './routes/all.routes.js'
 import cors from 'cors'
+import cookieParser from 'cookie-parser';
 
 const app = express();
 dotenv.config();
 app.use(cors());
+app.use(cookieParser())
 app.use(bodyParser.json())
 app.use(allRoutes);
+
 
 const port = process.env.PORT;
 mongoose.set('strictQuery', true);

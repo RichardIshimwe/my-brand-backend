@@ -16,16 +16,15 @@ const signupSchema = new mongoose.Schema({
         required: true,
         minLength:8
     },
-    confirmPassword:{
-        type: String,
-        required: true
-    },
     createdAt:{
        type: Date,
        default: Date.now
+    },
+    admin:{
+        type: Boolean
     }
 })
 
-const signup = mongoose.model('signup',signupSchema);
+const signup = mongoose.model('signups',signupSchema);
 
 export default signup

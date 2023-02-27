@@ -7,9 +7,8 @@ class signupControllers {
   const { email,username,password,confirmPassword } = req.body;
   const salt = bcrypt.genSaltSync(10);
   const passwordHashed = bcrypt.hashSync(password,salt);
-  const confirmPasswordHashed = bcrypt.hashSync(confirmPassword,salt);
-  let passwordMatch = bcrypt.compareSync(password, confirmPasswordHashed);
-  const newUser = new signup({ email,username,password:passwordHashed,confirmPassword:confirmPasswordHashed });
+  let passwordMatch = bcrypt.compareSync(confirmPassword, passwordHashed);
+  const newUser = new signup({ email,username,password:passwordHashed });
   if(passwordMatch){
   await newUser.save()
   res.status(201).json({
@@ -27,7 +26,6 @@ class signupControllers {
     })
    }
    }
-
    static async allUsers(req, res) {
     try {
       let allUser = await signup.find();
