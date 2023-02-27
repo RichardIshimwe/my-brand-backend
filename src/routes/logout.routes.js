@@ -1,8 +1,8 @@
-// import express from 'express'
-// import logout from '../controllers/logout.controller.js'
+import express from 'express'
+import logout from '../controllers/logout.controllers.js';
 
-// const router = express.Router();
+const router = express.Router();
 
-// router.post('/', logout.logout);
+router.post('/', logout.logout);
 
-// export default router
+export default router
