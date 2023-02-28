@@ -16,6 +16,7 @@ routes.use('/message', verifyUser, message);
 routes.use('/login', login);
 routes.use('/logout', logout);
 routes.use('/comment', verifyUser, comment)
+
 routes.use((req, res) => {
    return res.status(404).json({ message: "page not found" })
 })

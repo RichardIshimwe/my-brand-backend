@@ -13,7 +13,6 @@ app.use(cookieParser())
 app.use(bodyParser.json())
 app.use(allRoutes);
 
-
 const port = process.env.PORT;
 mongoose.set('strictQuery', true);
 
