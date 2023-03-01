@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "main": "src/index.js",
-    "start": "node src/index.js"
+    "start": "src/index.js"
   },
   "author": "",
   "license": "ISC",
