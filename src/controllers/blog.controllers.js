@@ -32,24 +32,17 @@ class blogcontroler {
         const { token } = req.cookies;
         const decoded = jwt.verify(token, process.env.SECRET_KEY);
         const { username } = decoded;
-        dotenv.config();
-        cloudinary.config({
-            cloud_name: `${process.env.CLOUD_NAME}`,
-            api_key: `${process.env.API_KEYD}`,
-            api_secret: `${process.env.API_SECRET}`
-        })
+        const { image } = req.cookies
         try {
             const { title, description } = req.body
             const blogs = await blog.find();
             const id = blogs.length;
-            cloudinary.uploader.upload(req.file.path, async (result, err) => {
-                if (!result) {
-                    return response.error(res, 500, err);
-                }
-                const newBlog = await blog.create({ id, author: username, title, description, image: result.url })
+                
+                const newBlog = await blog.create({ id, author: username, title, description, image })
                 response.success(res, 200, "blog created successfuly", newBlog)
-            });
+
         } catch (error) {
+            console.log(error)
             return response.error(res, 500, "internal server error")
         }
     }

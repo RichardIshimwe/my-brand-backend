@@ -10,8 +10,6 @@ const verifyUser = async (req, res, next) => {
     try {
         const check = jwt.verify(token, process.env.SECRET_KEY);
         const { admin,username } = check;
-        console.log(admin)
-        console.log(username)
         const { id } = req.params;
         if (admin) return  next();
         if(id){
@@ -24,7 +22,6 @@ const verifyUser = async (req, res, next) => {
         }
         return response.error(res, 400, "Unauthorized: only the admin or the owner can perform the operation")
     } catch (error) {
-        console.log(error)
         return response.error(res, 500, error);
     }
 }
