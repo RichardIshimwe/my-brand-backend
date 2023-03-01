@@ -11,4 +11,4 @@ router.put('/:id', isAdmin, blogControler.editBlog)
 router.get('/:id', blogControler.singleBlog)
 router.post('/', uploads.single('image'), blogControler.createBlog);
 
-export default router 
+export default router

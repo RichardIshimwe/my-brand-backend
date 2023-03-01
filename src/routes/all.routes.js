@@ -9,7 +9,7 @@ import comment from './comment.routes.js'
 import logout from './logout.routes.js';
 
 const routes = express.Router();
-
+// routes.post('/test',(req, res) => res.status(200).json({message:"testing route"}));
 routes.use('/signup', signup);
 routes.use('/blogs', verifyUser, blogRoutes);
 routes.use('/message', verifyUser, message);
