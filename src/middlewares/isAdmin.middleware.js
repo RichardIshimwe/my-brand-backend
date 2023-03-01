@@ -22,7 +22,7 @@ const verifyUser = async (req, res, next) => {
         }
         return response.error(res, 400, "Unauthorized: only the admin or the owner can perform the operation")
     } catch (error) {
-        return response.error(res, 500, error);
+        return response.error(res, 500,  "Internal server error");
     }
 }
 export default verifyUser

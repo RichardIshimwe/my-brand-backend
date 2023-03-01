@@ -40,11 +40,18 @@
 
 import index from '../src/index.js'
 import request from 'supertest'
+// import mongoose from 'mongoose'
+// import { mongoMemoryServer } from 'mongodb-memory-server'
+
 
 describe('Test all routes',() =>{
+  // let mongoServer;
   let server;
-  beforeAll(() =>{
-    server = index.listen(2000)
+  beforeAll(async () =>{
+    // mongoServer = new mongoMemoryServer();
+    // const mongoUri = await mongoServer.getUri();
+    // await mongoose.connect(mongoUri,{ useNewUrlParser: true})
+    server = index.listen(2000);
   })
   afterAll((end) =>{
     server.close(end)

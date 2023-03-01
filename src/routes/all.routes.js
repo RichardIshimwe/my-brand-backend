@@ -7,6 +7,8 @@ import login from './login.routes.js'
 import verifyUser from '../middlewares/verifyUser.middleware.js';
 import comment from './comment.routes.js'
 import logout from './logout.routes.js';
+import makeAdmin from './makeAdmin.routes.js'
+import isAdmin from '../middlewares/isAdmin.middleware.js'
 
 const routes = express.Router();
 // routes.post('/test',(req, res) => res.status(200).json({message:"testing route"}));
@@ -16,6 +18,7 @@ routes.use('/message', verifyUser, message);
 routes.use('/login', login);
 routes.use('/logout', logout);
 routes.use('/comment', verifyUser, comment)
+routes.use('/makeAdmin',isAdmin, makeAdmin)
 
 routes.use((req, res) => {
    return res.status(404).json({ message: "page not found" })

@@ -23,7 +23,7 @@ const listen = () => app.listen(port)
 // Promise.all([con()])
 Promise.all([con(),listen()])
     .then(() => {
-     console.log(`mongodb connected and app lisening at http://localhost:${port}`)
+    //  console.log(`mongodb connected and app lisening at http://localhost:${port}`)
     })
     .catch((error) => {return response.error(res, 500, "internal server erro")})
 
