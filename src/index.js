@@ -12,16 +12,16 @@ dotenv.config();
 app.use(cors());
 app.use(cookieParser())
 app.use(bodyParser.json())
+app.get('/',(req, res) => response.success(res, 200,"welcome to the back-end of my project"));
 app.use(allRoutes);
-
 const port = process.env.PORT;
 mongoose.set('strictQuery', true);
 
 const con = () => mongoose.connect(`${process.env.MONGODBURL}`, { useNewUrlParser: true, useUnifiedTopology: true });
 const listen = () => app.listen(port)
 
-Promise.all([con()])
-// Promise.all([con(),listen()])
+// Promise.all([con()])
+Promise.all([con(),listen()])
     .then(() => {
      console.log(`mongodb connected and app lisening at http://localhost:${port}`)
     })
