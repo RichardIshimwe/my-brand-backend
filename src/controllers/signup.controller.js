@@ -25,6 +25,7 @@ class signupControllers {
       let allUser = await signup.find();
       response.success(res, 200, `all users are ${allUser.length}`, allUser);
     } catch (error) {
+      console.log(error)
       return response.error(res, 500, "internal server error");
     }
   }

@@ -13,15 +13,9 @@ const verifyUser = async (req, res, next) => {
         console.log(admin)
         console.log(username)
         const { id } = req.params;
-        if (admin) return  next();
-        if(id){
         const find = await blog.findById({ _id: id});
-        if(find){
-        if (admin || (find.author === username))return  next()
-        }else{
-            return response.error(res, 404, `The blog with id:${id} is not found`)
-        }
-        }
+        if (admin || (find.author === username))
+        if (admin) return  next();
         return response.error(res, 400, "Unauthorized: only the admin or the owner can perform the operation")
     } catch (error) {
         console.log(error)

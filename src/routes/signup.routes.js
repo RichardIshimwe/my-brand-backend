@@ -6,6 +6,6 @@ import isAdmin from '../middlewares/isAdmin.middleware.js'
 const routes = express.Router();
 
 routes.post('/', signupMiddleware, signup.signupUser)
-routes.get('/', isAdmin, signup.allUsers)
+routes.get('/',isAdmin, signup.allUsers)
 
 export default routes
