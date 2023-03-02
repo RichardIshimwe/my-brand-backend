@@ -21,11 +21,11 @@ mongoose.set('strictQuery', true);
  mongoose.connect(`${process.env.MONGODBURL}`, { useNewUrlParser: true, useUnifiedTopology: true });
  app.listen(port);
 
-// Promise.all([con()])
+Promise.all([con()])
 // Promise.all([con(),listen()])
-//     .then(() => {
-//     //  console.log(`mongodb connected and app lisening at http://localhost:${port}`)
-//     })
-//     .catch((error) => {return response.error(res, 500, "internal server erro")})
+    .then(() => {
+    //  console.log(`mongodb connected and app lisening at http://localhost:${port}`)
+    })
+    .catch((error) => {return response.error(res, 500, "internal server erro")})
 
 // export default app
