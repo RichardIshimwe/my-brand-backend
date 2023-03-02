@@ -1,5 +1,4 @@
 import express from 'express';
-
 import blogRoutes from './blog.routes.js'
 import signup from './signup.routes.js'
 import message from './messages.routes.js'
@@ -11,10 +10,11 @@ import makeAdmin from './makeAdmin.routes.js'
 import isAdmin from '../middlewares/isAdmin.middleware.js'
 
 const routes = express.Router();
-// routes.post('/test',(req, res) => res.status(200).json({message:"testing route"}));
 routes.use('/signup', signup);
-routes.use('/blogs', verifyUser, blogRoutes);
-routes.use('/message', verifyUser, message);
+routes.use('/blogs', blogRoutes);
+// routes.use('/blogs', verifyUser, blogRoutes);
+routes.use('/message', message);
+// routes.use('/message', verifyUser, message);(test purpose)
 routes.use('/login', login);
 routes.use('/logout', logout);
 routes.use('/comment', verifyUser, comment)

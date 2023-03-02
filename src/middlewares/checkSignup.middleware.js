@@ -27,11 +27,11 @@ const checkEmailOrUsername = (req, res, next) => {
     const { error } = validate.validate( req.body );
     if(error){
     const errorMessage = error.details.map((detail) => detail.message).join(', ')
-      return  response.error(res, 400, errorMessage)
+      return  response.error(res, 400, errorMessage);
     }
     signup.findOne({ $or: [{ email }, { username }] }, (err, result) => {
         if (err) {
-            return response.error(res, 500, err)
+            return response.error(res, 500, "internal server error")
         }
         if (result) {
             return response.error(res, 400, "username or email is already taken")

@@ -12,12 +12,12 @@ class signupControllers {
       const newUser = new signup({ email, username, password: passwordHashed });
       if (passwordMatch) {
         await newUser.save()
-        response.success(res, 201, "signup complete", newUser);
+        return response.success(res, 200, "signup complete", newUser);
       } else {
         response.error(res, 400, "password and confirm password does not match");
       }
     } catch (error) {
-      return response.error(res, 400, "internal server error");
+      return response.error(res, 500, "internal server error");
     }
   }
   static async allUsers(req, res) {
