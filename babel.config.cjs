@@ -1,4 +1,8 @@
 module.exports = {
+	// transform: {
+	// 	'\\.[jt]sx?$': 'babel-jest',
+	// 	'\\.css$': 'some-css-transformer',
+	//   },
 	presets: [
 		[
 			"@babel/preset-env",

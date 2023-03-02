@@ -19,7 +19,7 @@ const port = process.env.PORT;
 mongoose.set('strictQuery', true);
 
  mongoose.connect(`${process.env.MONGODBURL}`, { useNewUrlParser: true, useUnifiedTopology: true });
- app.listen(port);
+//  app.listen(port);
 
 // Promise.all([con()])
 // Promise.all([con(),listen()])
@@ -28,4 +28,4 @@ mongoose.set('strictQuery', true);
 //     })
 //     .catch((error) => {return response.error(res, 500, "internal server erro")})
 
-// export default app
+export default app
