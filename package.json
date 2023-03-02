@@ -5,9 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "main": "src/index.js",
-    "start": "nodemon src/index.js",
-    "test": "jest --detectOpenHandles"
+    "start": "node src/index.js"
   },
   "author": "",
   "license": "ISC",
