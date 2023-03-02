@@ -1,8 +1,12 @@
 import blog from '../models/blogs.model.js'
 import dotenv from 'dotenv'
 import jwt from 'jsonwebtoken'
-import cloudinary from 'cloudinary'
+// import cloudinary from 'cloudinary'
 import response from '../utils/response.util.js'
+import express from 'express';
+import multer from 'multer';
+import { v2 as cloudinary } from 'cloudinary';
+import { CloudinaryStorage } from 'multer-storage-cloudinary'
 
 class blogcontroler {
 
@@ -32,15 +36,31 @@ class blogcontroler {
         const { token } = req.cookies;
         const decoded = jwt.verify(token, process.env.SECRET_KEY);
         const { username } = decoded;
-        const { image } = req.cookies
+        // const { image } = req.cookies
+        cloudinary.config({
+            cloud_name: 'dkomkrwe2',
+            api_key: '163417148236758',
+            api_secret: 'IxJS_MUxaXnlxIn38ODen7_vSjE'
+          });
         try {
+            const storage = new CloudinaryStorage({
+                cloudinary,
+                params:{
+                  folder: 'blogs-image',
+                  allowed_formats: ['jpg', 'png']
+                }
+              });
+            const upload = multer({ storage }).single('image');
+            upload(req, res,async (err) =>{
+                if(err){
+                 return console.log(err)
+                }
             const { title, description } = req.body
             const blogs = await blog.find();
             const id = blogs.length;
-                
-                const newBlog = await blog.create({ id, author: username, title, description, image })
+            const newBlog = await blog.create({ id, author: username, title, description, image:req.file.path })
                 response.success(res, 200, "blog created successfuly", newBlog)
-
+            })
         } catch (error) {
             console.log(error)
             return response.error(res, 500, "internal server error")
