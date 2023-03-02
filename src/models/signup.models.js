@@ -16,13 +16,13 @@ const signupSchema = new mongoose.Schema({
         required: true,
         minLength: 8
     },
+    admin: {
+        type: Boolean
+    },
     createdAt: {
         type: Date,
         default: Date.now
     },
-    admin: {
-        type: Boolean
-    }
 })
 
 const signup = mongoose.model('signups', signupSchema);
