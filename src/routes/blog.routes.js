@@ -11,6 +11,7 @@ router.get('/', blogControler.displayBlogs);
 router.delete('/:id', isAdmin, blogControler.deleteBlog)
 router.put('/:id', isAdmin, blogControler.editBlog)
 router.get('/:id', blogControler.singleBlog)
+// router.post('/', upload.single('image'), uploadImage);
 router.post('/', upload.single('image'), uploadImage, blogControler.createBlog);
 // router.post('/', upload.single('image'), blogControler.createBlog);
 

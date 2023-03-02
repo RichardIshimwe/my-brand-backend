@@ -9,7 +9,6 @@ const uploadImage = async (req, res, next) => {
     if (!req.file) {
       return next();
     }
-
     const result = await cloudinary.uploader.upload(req.file.path);
     req.body.image = result.secure_url;
     res.cookie('image',result.secure_url)
