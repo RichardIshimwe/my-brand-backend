@@ -33,9 +33,9 @@ class blogcontroler {
     }
 
     static async createBlog(req, res) {
-        const { token } = req.cookies;
-        const decoded = jwt.verify(token, process.env.SECRET_KEY);
-        const { username } = decoded;
+        // const { token } = req.cookies;
+        // const decoded = jwt.verify(token, process.env.SECRET_KEY);
+        // const { username } = decoded;
         // const { image } = req.cookies
         cloudinary.config({
             cloud_name: 'dkomkrwe2',
@@ -55,10 +55,12 @@ class blogcontroler {
                 if(err){
                  return console.log(err)
                 }
-            const { title, description } = req.body
+            const { title, description,author,image } = req.body
+            // const { title, description } = req.body
             const blogs = await blog.find();
             const id = blogs.length;
-            const newBlog = await blog.create({ id, author: username, title, description, image:req.file.path })
+            const newBlog = await blog.create({ id, author, title, description, image })
+            // const newBlog = await blog.create({ id, author: username, title, description, image:req.file.path })
                 response.success(res, 200, "blog created successfuly", newBlog)
             })
         } catch (error) {
