@@ -2,7 +2,6 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-// import allRoutes from ''
 import allRoutes from './routes/all.routes.js'
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
