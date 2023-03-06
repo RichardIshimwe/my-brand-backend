@@ -10,8 +10,8 @@ describe('UserController Test', () => {
       const password = '123456';
       const passwordHashed = bcrypt.hashSync(password, salt);
       const newUser = {
-        email: 'testwr@tst.com',
-        username: 'testwr',
+        email: 'iamintest@tst.com',
+        username: 'iamintest',
         password: password,
         confirmPassword: password,
       };

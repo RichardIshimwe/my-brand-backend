@@ -17,8 +17,10 @@ routes.use('/message', message);
 // routes.use('/message', verifyUser, message);(test purpose)
 routes.use('/login', login);
 routes.use('/logout', logout);
-routes.use('/comment', verifyUser, comment)
-routes.use('/makeAdmin',isAdmin, makeAdmin)
+routes.use('/comment', comment)
+// routes.use('/comment', verifyUser, comment)
+routes.use('/makeAdmin', makeAdmin)
+// routes.use('/makeAdmin',isAdmin, makeAdmin)
 
 routes.use((req, res) => {
    return res.status(404).json({ message: "page not found" })

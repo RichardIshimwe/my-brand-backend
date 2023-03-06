@@ -1,4 +1,4 @@
-import index from '../index.js'
+import index from '../index_test'
 import supertest from 'supertest'
 
 describe('Test all routes',() =>{

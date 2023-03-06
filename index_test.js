@@ -16,7 +16,6 @@ app.get('/',(req, res) => response.success(res, 200,"welcome to the back-end of 
 app.use(allRoutes);
 const port = process.env.PORT;
 mongoose.set('strictQuery', true);
-
- mongoose.connect(`${process.env.TEST_MONGODBURL}`, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(`${process.env.TEST_MONGODBURL}`, { useNewUrlParser: true, useUnifiedTopology: true });
 
 export default app

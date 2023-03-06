@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">83.33% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/8</span>
+                <span class='fraction'>5/6</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">80% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/7</span>
+                <span class='fraction'>4/5</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -79,35 +79,41 @@
 <a name='L14'></a><a href='#L14'>14</a>
 <a name='L15'></a><a href='#L15'>15</a>
 <a name='L16'></a><a href='#L16'>16</a>
-<a name='L17'></a><a href='#L17'>17</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import response from "../utils/response.util.js";
 import blog from "../models/blogs.model.js";
-import jwt from "jsonwebtoken";
+// import jwt from "jsonwebtoken";
 &nbsp;
 class comment {
-<span class="fstat-no" title="function not covered" >  st</span>atic async comment(req, res) {
-    const { id } = <span class="cstat-no" title="statement not covered" >req.params,</span> _id = <span class="cstat-no" title="statement not covered" >id;</span>
-    const { token } = <span class="cstat-no" title="statement not covered" >req.cookies;</span>
-    const { username } = <span class="cstat-no" title="statement not covered" >jwt.verify(token, process.env.SECRET_KEY);</span>
-    const { comment } = <span class="cstat-no" title="statement not covered" >req.body;</span>
-    const objectToPush = <span class="cstat-no" title="statement not covered" >{ name: username, comment: comment };</span>
-    const blogToComment = <span class="cstat-no" title="statement not covered" >await blog.findByIdAndUpdate(_id, { $push: { comments: objectToPush } }, { new: true })</span>
-<span class="cstat-no" title="statement not covered" >    response.success(res, 200, "blog found", blogToComment)</span>
+  static async comment(req, res) {
+    const { id } = req.params, _id = id;
+    // const { token } = req.cookies;
+    // const { username } = jwt.verify(token, process.env.SECRET_KEY);
+    const { username,comment } = req.body;
+    // const { comment } = req.body;
+    const objectToPush = { username:username,comment: comment };
+    // const objectToPush = { name: username, comment: comment };
+    const blogToComment = await blog.findByIdAndUpdate(_id, { $push: { comments: objectToPush } }, { new: true })
+<span class="cstat-no" title="statement not covered" >    response.success(res, 200, "thank you for commenting", blogToComment)</span>
   }
 }
 &nbsp;
@@ -118,7 +124,7 @@ export default comment</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-02T15:52:41.899Z
+                at 2023-03-06T12:26:03.424Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

@@ -7,7 +7,7 @@ describe('UserController Test', () => {
     it('should log in a user if he/she has an account', async () =>{
       const userToLogin = {
         email: 'ouhjtest@tst.com',
-        password: '123456'
+        password: '1234'
       }
       const username = 'oyuhtest';
       try {
@@ -16,6 +16,7 @@ describe('UserController Test', () => {
           .send(userToLogin)
           .expect(200);
         expect(responses.body.message).toEqual(`${username} you are welcome........`);
+
       } catch (error) {
         const errors = await request(app)
           .get('/login')

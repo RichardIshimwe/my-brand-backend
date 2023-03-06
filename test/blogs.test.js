@@ -2,16 +2,29 @@ import request from 'supertest';
 import app from '../index_test.js';
 import Blog from '../src/models/blogs.model.js'
 
-describe('BlogController', () => {
+describe('find a blog', () =>{
+  test('should return 404 when the blog does not exist', async () =>{
+      const find = await request(app).get('/blogs/noIdProvided');
+      expect(find.status).toBe(404);
+      expect(find.body.message).toBe(`The blog with id:noIdProvided is not found`)
+  })
+})
 
-    test('should return the blog if it exists', async () => {
-        const response = await request(app).get(`/blogs/640119786d0f657b579ec0e3`);
-        try {
+describe('Single blog', () => {
+
+  test('should return the blog if it exists', async () => {
+    const singleBlog = await Blog.create({
+      author: 'admin',
+      title: 'added by the admin',
+      description: 'description by the admin'
+    })
+        const response = await request(app).get(`/blogs/${singleBlog._id}`);
+
+          expect(response.body.message).toBe("The blog was found")
           expect(response.status).toBe(200);
-          expect(response.body.data.description).toBe('display single blog');
-        } catch (error) {
-          expect(response.status).toBe(404);
-        }
+          expect(response.body.data.author).toBe('admin');
+          expect(response.body.data.title).toBe('added by the admin');
+          expect(response.body.data.description).toBe('description by the admin')
     });
   });
 
@@ -33,6 +46,7 @@ describe('BlogController', () => {
       expect(response.status).toBe(200);
       expect(response.body.message).toBe(`All blogs available are:${allLength + 2}`);
       expect(response.body.data.length).toBe(allLength + 2);
+      expect(response.body.data[allLength + 1].author).toBe('test if it is working');
     });
   });
 

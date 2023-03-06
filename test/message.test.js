@@ -1,7 +1,6 @@
 import index from '../index_test.js'
 import request from 'supertest'
 
-describe('messageController Test', () => {
     describe('Send message', () => {
 
         it('should send message', async () => {
@@ -16,5 +15,4 @@ describe('messageController Test', () => {
                 .expect(200);
         })
     });
-});
 
