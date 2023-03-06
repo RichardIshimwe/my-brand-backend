@@ -6,10 +6,10 @@ describe('UserController Test', () => {
   describe('signupUser', () => {
     it('should log in a user if he/she has an account', async () =>{
       const userToLogin = {
-        email: 'ouhjtest@tst.com',
-        password: '1234'
+        email: 'iamintest@tst.com',
+        password: '123456'
       }
-      const username = 'oyuhtest';
+      const username = 'iamintest';
       try {
         const responses = await request(app)
           .get('/login')
