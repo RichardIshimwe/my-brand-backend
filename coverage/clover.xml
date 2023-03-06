@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1678105563487" clover="3.2.0">
-  <project timestamp="1678105563495" name="All files">
-    <metrics statements="186" coveredstatements="103" conditionals="40" coveredconditionals="7" methods="27" coveredmethods="14" elements="253" coveredelements="124" complexity="0" loc="186" ncloc="186" packages="6" files="24" classes="24"/>
+<coverage generated="1678113231898" clover="3.2.0">
+  <project timestamp="1678113231898" name="All files">
+    <metrics statements="186" coveredstatements="99" conditionals="40" coveredconditionals="5" methods="27" coveredmethods="13" elements="253" coveredelements="117" complexity="0" loc="186" ncloc="186" packages="6" files="24" classes="24"/>
     <package name="MY-BRAND-BACK-END">
       <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="index_test.js" path="/Users/andelarwanda/MY-BRAND-BACK-END/index_test.js">
@@ -19,16 +19,16 @@
       </file>
     </package>
     <package name="MY-BRAND-BACK-END.src.controllers">
-      <metrics statements="91" coveredstatements="42" conditionals="16" coveredconditionals="5" methods="15" coveredmethods="10"/>
+      <metrics statements="91" coveredstatements="38" conditionals="16" coveredconditionals="3" methods="15" coveredmethods="9"/>
       <file name="blog.controllers.js" path="/Users/andelarwanda/MY-BRAND-BACK-END/src/controllers/blog.controllers.js">
-        <metrics statements="40" coveredstatements="25" conditionals="8" coveredconditionals="4" methods="6" coveredmethods="5"/>
+        <metrics statements="40" coveredstatements="25" conditionals="8" coveredconditionals="3" methods="6" coveredmethods="5"/>
         <line num="14" count="2" type="stmt"/>
         <line num="15" count="2" type="stmt"/>
         <line num="16" count="2" type="stmt"/>
-        <line num="17" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="18" count="1" type="stmt"/>
+        <line num="17" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="18" count="0" type="stmt"/>
         <line num="20" count="1" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
         <line num="27" count="1" type="stmt"/>
         <line num="28" count="1" type="stmt"/>
         <line num="29" count="1" type="stmt"/>
@@ -64,18 +64,18 @@
         <line num="94" count="0" type="stmt"/>
       </file>
       <file name="comment.controller.js" path="/Users/andelarwanda/MY-BRAND-BACK-END/src/controllers/comment.controller.js">
-        <metrics statements="5" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="7" count="1" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
       </file>
       <file name="login.controller.js" path="/Users/andelarwanda/MY-BRAND-BACK-END/src/controllers/login.controller.js">
-        <metrics statements="14" coveredstatements="4" conditionals="6" coveredconditionals="1" methods="2" coveredmethods="1"/>
-        <line num="9" count="2" type="stmt"/>
-        <line num="10" count="2" type="stmt"/>
-        <line num="11" count="2" type="cond" truecount="1" falsecount="1"/>
+        <metrics statements="14" coveredstatements="2" conditionals="6" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="12" count="0" type="stmt"/>
         <line num="13" count="0" type="cond" truecount="0" falsecount="4"/>
         <line num="14" count="0" type="stmt"/>
@@ -84,7 +84,7 @@
         <line num="18" count="0" type="stmt"/>
         <line num="19" count="0" type="stmt"/>
         <line num="20" count="0" type="stmt"/>
-        <line num="24" count="2" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
         <line num="27" count="0" type="stmt"/>
         <line num="28" count="0" type="stmt"/>
       </file>
@@ -102,15 +102,15 @@
         <line num="13" count="0" type="stmt"/>
       </file>
       <file name="message.controllers.js" path="/Users/andelarwanda/MY-BRAND-BACK-END/src/controllers/message.controllers.js">
-        <metrics statements="9" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <metrics statements="9" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
         <line num="7" count="1" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
         <line num="12" count="0" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
-        <line num="17" count="1" type="stmt"/>
-        <line num="18" count="1" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
         <line num="20" count="0" type="stmt"/>
       </file>
       <file name="signup.controller.js" path="/Users/andelarwanda/MY-BRAND-BACK-END/src/controllers/signup.controller.js">
@@ -174,11 +174,11 @@
         <metrics statements="7" coveredstatements="5" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="1"/>
         <line num="4" count="7" type="stmt"/>
         <line num="16" count="7" type="stmt"/>
-        <line num="17" count="2" type="stmt"/>
-        <line num="18" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="cond" truecount="1" falsecount="1"/>
         <line num="19" count="0" type="stmt"/>
         <line num="20" count="0" type="stmt"/>
-        <line num="22" count="2" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
       </file>
       <file name="verifyUser.middleware.js" path="/Users/andelarwanda/MY-BRAND-BACK-END/src/middlewares/verifyUser.middleware.js">
         <metrics statements="10" coveredstatements="1" conditionals="4" coveredconditionals="0" methods="1" coveredmethods="0"/>
@@ -275,7 +275,7 @@
       <file name="response.util.js" path="/Users/andelarwanda/MY-BRAND-BACK-END/src/utils/response.util.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="4" count="6" type="stmt"/>
-        <line num="10" count="4" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
       </file>
     </package>
   </project>

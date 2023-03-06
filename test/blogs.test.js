@@ -54,9 +54,9 @@ describe('Creating Blog', () => {
     test('should create a new blog', async () => {
       const response = await request(app)
         .post('/blogs')
-        .field('author', 'admin')
-        .field('title', 'this is testing title')
-        .field('description', 'New test blog description')
+        .field('author', 'title')
+        .field('title', 'title')
+        .field('description', 'title')
         .field('image', 'reserved for image')
       expect(response.status).toBe(200);
       expect(response.body.message).toBe('blog created successfuly');

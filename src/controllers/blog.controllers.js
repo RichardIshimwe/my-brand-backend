@@ -50,7 +50,7 @@ class blogcontroler {
                   allowed_formats: ['jpg', 'png']
                 }
               });
-            const upload = multer({ storage }).single('image');
+            const upload = multer({ storage }).single(' ');
             upload(req, res,async (err) =>{
                 if(err){
                  return console.log(err)
