@@ -28,7 +28,7 @@ class blogcontroler {
             const blogs = await blog.find();
             response.success(res, 200, `All blogs available are:${blogs.length}`, blogs)
         } catch (error) {
-            return response(res, 500, error);
+            return response(res, 500, "Internal server error");
         }
     }
 

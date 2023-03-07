@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "type": "module",
   "scripts": {
-    "start": "node ./src/index.js"
+    "start": "nodemon ./src/index.js"
   },
   "author": "",
   "license": "ISC",
@@ -21,14 +21,19 @@
     "jsonwebtoken": "^9.0.0",
     "mongodb-memory-server": "^8.11.5",
     "mongoose": "^6.9.3",
+    "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",
     "multer-storage-cloudinary": "^4.0.0",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^4.6.2"
   },
   "devDependencies": {
     "@babel/core": "^7.21.0",
     "@babel/node": "^7.20.7",
     "@babel/preset-env": "^7.20.2",
+    "@types/body-parser": "^1.19.2",
+    "@types/express": "^4.17.17",
     "babel-jest": "^29.4.3",
     "jest": "^29.4.3",
     "supertest": "^6.3.3"
