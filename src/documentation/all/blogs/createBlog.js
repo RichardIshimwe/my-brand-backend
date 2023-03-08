@@ -1,7 +1,7 @@
 const createBlog={
     post: {
       tags: ["Blogs"],
-      description: "Create a new blog post",
+      summary: "Create a new blog post",
       operationId: "createBlog",
       parameters: [
     ],

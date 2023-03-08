@@ -7,6 +7,13 @@ import makeAdmin from './user/makeAdmin.js';
 import allBlogs from './blogs/getAllBlogs.js'
 import createBlog from './blogs/createBlog.js'
 import deleteBlog from './blogs/deleteBlog.js'
+import editBlog from './blogs/editBlog.js';
+import comment from './blogs/comment.js'
+import singleBlog from './blogs/singleblog.js';
+
+
+import message from './messages/sendmessage.js';
+import allmessage from './messages/allmessages.js';
 
 
 export const paths = {
@@ -24,8 +31,17 @@ export const paths = {
       ...allBlogs,
       ...createBlog
     },
-    '/blogs/:id': {
-      ...deleteBlog
+    '/blogs/{id}': {
+      ...deleteBlog,
+      ...editBlog,
+      ...singleBlog
+    },
+    '/comment/{id}': {
+      ...comment
+    },
+    '/message': {
+      ...message,
+      ...allmessage
     }
   };
   

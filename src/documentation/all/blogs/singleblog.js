@@ -1,9 +1,9 @@
-const deleteBlog={
+const singleBlog={
   
-    delete: {
+    get: {
         tags: ["Blogs"],
-        summary: "Delete a blog by ID",
-        operationId: "deleteBlog",
+        summary: "Display a single blog by ID",
+        operationId: "singleBlog",
         parameters: [
             {
                 in: "path",
@@ -33,4 +33,4 @@ const deleteBlog={
     }
 }
 
-export default deleteBlog
+export default singleBlog

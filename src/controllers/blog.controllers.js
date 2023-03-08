@@ -87,7 +87,9 @@ class blogcontroler {
             if (!blogUpdated) {
                 return response.error(res, 400, `the blog with id:${id} is not found.`)
             }
-            response.success(res, 200, "blog edited successful", blogUpdated);
+            response.success(res, 200, "gfdnfd", blogUpdated);
+            console.log(title)
+            // response.success(res, 200, "blog edited successfulyyyyyy", blogUpdated);
         } catch (error) {
             return response.error(res, 500, error)
         }
