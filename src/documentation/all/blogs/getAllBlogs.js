@@ -1,7 +1,6 @@
 const getBlogs={
-
     get: {
-        tags: ["Blog API"],
+        tags: ["Blogs"],
         summary: "Get all blogs",
         operationId: "getAllBlogs",
         parameters: [],

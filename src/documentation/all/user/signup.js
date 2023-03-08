@@ -1,8 +1,8 @@
-const login={
+const signup={
     post: {
-      tags: ["Authentication"],
-      summary: "Login a user",
-      operationId: "login",
+      tags: ["User"],
+      summary: "Signup a user",
+      operationId: "Signup",
       parameters: [],
       requestBody: {
         content: {
@@ -15,20 +15,30 @@ const login={
                   description: "The email of the user",
                   example: "heistesting@gmail.com"
                 },
+                username: {
+                    type: "string",
+                    description: "The password of the user",
+                    example: "username"
+                  },
                 password: {
                   type: "string",
                   description: "The password of the user",
                   example: "password"
-                }
+                },
+                confirmPassword: {
+                    type: "string",
+                    description: "The password of the user",
+                    example: "password"
+                  }
               },
-              required: ["email", "password"]
+              required: ["email", "username", "password", "confirmPassword"]
             }
           }
         }
       },
       responses: {
         200: {
-          description: "User logged in successfully",
+          description: "signup complete",
           schema: {
             type: "object",
             properties: {
@@ -47,10 +57,10 @@ const login={
           description: "Please do a signup"
         },
         500: {
-          description: "Server error"
+          description: "Internal Server error"
         }
       }
     }
   }
 
-  export default login
+  export default signup

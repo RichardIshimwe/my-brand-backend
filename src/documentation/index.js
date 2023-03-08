@@ -9,5 +9,5 @@ import all from './all/index.js'
 // import blogs from './todos/index.js'
 // import componet from './componets.js'
 
-export default { ...basicInfo, ...server, ...tag, ...component, ...all }
+export default { ...basicInfo, ...server, ...tag, ...all }
 // export default { ...basicInfo, ...server, ...tag, ...componet, ...blogs }

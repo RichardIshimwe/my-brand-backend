@@ -1,7 +1,7 @@
 const tags = {
     tags: [
       {
-        name: "Todo CRUD operations", // name of a tag
+        name: "My Brand endpoints test", // name of a tag
       },
     ],
   };
