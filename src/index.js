@@ -16,7 +16,7 @@ app.use(cors());
 app.use(cookieParser())
 app.use(bodyParser.json())
 app.use('/api-docs',swaggerUi.serve,swaggerUi.setup(docs));
-app.get('/',(req, res) => response.success(res, 200,"welcome to the back-end swagger documentation of my project"));
+app.get('/',(req, res) => response.success(res, 200,"welcome to the back-end of my project use /api-docs to get the documentation "));
 app.use(allRoutes);
 const port = process.env.PORT;
 mongoose.set('strictQuery', true);
