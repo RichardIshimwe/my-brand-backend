@@ -21,5 +21,5 @@ app.use(allRoutes);
 const port = process.env.PORT;
 mongoose.set('strictQuery', true);
  mongoose.connect(`${process.env.MONGODBURL}`, { useNewUrlParser: true, useUnifiedTopology: true });
- app.listen(port);
- console.log(`the server is listening at http://localhost:${port}/api-docs`);
+//  app.listen(port);
+//  console.log(`the server is listening at http://localhost:${port}/api-docs`);
