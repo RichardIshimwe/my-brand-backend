@@ -27,6 +27,10 @@ class login {
       console.log(error)
       return response.error(res, 500, "internal server error");
     }
+    static async testSwagger(req, res){
+      return res.status(200).json({ message: "this is test swagger" })
+    }
   }
+
 
 export default login
