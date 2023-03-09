@@ -1,4 +1,3 @@
-yaml
 name: My Brand Backend test workflow
 on:
   push:
