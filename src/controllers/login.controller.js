@@ -17,11 +17,10 @@ class login {
         res.cookie('token', asignToken, { httpOnly: true });
         const decoded = jwt.verify(asignToken, process.env.SECRET_KEY);
         const { username, admin } = decoded;
-        return response.success(res, 200, {
-                                       message:`${username} you are welcome.........`,
-                                       token:asignToken,
-                                       username:check.username,
-                                       admin:check.admin});
+        return response.success(res, 200,`${username} you are welcome.........`,{
+                                                                                  token:asignToken,
+                                                                                  username:check.username,
+                                                                                  admin:check.admin});
       } 
       else 
       {
