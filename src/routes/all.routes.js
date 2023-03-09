@@ -15,7 +15,7 @@ import isAdmin from '../middlewares/isAdmin.middleware.js'
 const routes = express.Router();
 // routes.post('/test',(req, res) => res.status(200).json({message:"testing route"}));
 routes.use('/signup', signup);
-routes.use('/blogs', verifyUser, blogRoutes);
+routes.use('/blogs', blogRoutes);
 routes.use('/message', verifyUser, message);
 // routes.use('/login', (req, res) => {
 //    return res.status(200).json({ message: "this is the login page",password:req.body.password,email:req.body.email })
