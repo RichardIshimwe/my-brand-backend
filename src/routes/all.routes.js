@@ -17,9 +17,6 @@ const routes = express.Router();
 routes.use('/signup', signup);
 routes.use('/blogs', blogRoutes);
 routes.use('/message', verifyUser, message);
-// routes.use('/login', (req, res) => {
-//    return res.status(200).json({ message: "this is the login page",password:req.body.password,email:req.body.email })
-// });
 routes.use('/login', login);
 routes.use('/logout', logout);
 routes.use('/comment', verifyUser, comment)

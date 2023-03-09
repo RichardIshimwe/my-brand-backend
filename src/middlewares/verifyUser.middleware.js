@@ -3,9 +3,11 @@ import jwt from 'jsonwebtoken';
 import signup from '../models/signup.models.js';
 
 const verifyUser = async (req, res, next) => {
-    const { token } = req.cookies;
+    let token;
+    if(req.body.token) token = req.body.token;
+    if(req.cookies.token) token = req.cookies.token;
     if (!token) {
-        return response.error(res, 401, "You have to login first")
+         return response.error(res, 401, "You have to login first")
     }
     try {
         const check = jwt.verify(token, process.env.SECRET_KEY)

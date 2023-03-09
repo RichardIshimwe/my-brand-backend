@@ -5,7 +5,13 @@ import jwt from "jsonwebtoken";
 class comment {
   static async comment(req, res) {
     const { id } = req.params, _id = id;
-    const { token } = req.cookies;
+    let  token ;
+    // let { token } = req.body;
+    if(req.cookies.token) token  = req.cookies.token;
+    if(req.body.token) token = req.body.token;
+    // console.log(req.cookies)
+    // if(token)
+    // const { token } = req.cookies || req.body;
     const { username } = jwt.verify(token, process.env.SECRET_KEY);
     const { comment } = req.body;
     const objectToPush = { name: username, comment: comment };
