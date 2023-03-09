@@ -6,7 +6,8 @@ import response from '../utils/response.util.js'
 import express from 'express';
 import multer from 'multer';
 import { v2 as cloudinary } from 'cloudinary';
-import { CloudinaryStorage } from 'multer-storage-cloudinary'
+import { CloudinaryStorage } from 'multer-storage-cloudinary';
+
 
 class blogcontroler {
 
@@ -20,6 +21,28 @@ class blogcontroler {
             response.success(res, 200, "The blog was found", singleBlog);
         } catch (error) {
             return response.error(res, 500, error)
+        }
+    }
+
+    static async userBlogs(req, res) {
+        let token;
+        if(req.body.token) token = req.body.token;
+        if(req.cookies.token) token = req.cookies.token;
+        try {
+         const check = jwt.verify(token, process.env.SECRET_KEY)
+        if(check.admin) {
+             const adminBlogs = await blog.find();
+             return response.success(res, 200, `All blogs of the admin available are:${adminBlogs.length} user:${check.username}`, adminBlogs)
+        }
+           blog.find({ author: check.username }, (err, users) => {
+                if (err) {
+                  return res.status(500).send(err);
+                }
+             let blogs = users;
+            response.success(res, 200, `All blogs available are:${blogs.length}`, blogs)
+              });
+        } catch (error) {
+            return response.error(res, 500, "Internal server error");
         }
     }
 

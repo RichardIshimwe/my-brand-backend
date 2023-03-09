@@ -6,10 +6,11 @@ import verifyUser from '../middlewares/isAdmin.middleware.js';
 const router = express.Router();
 
 router.get('/', blogControler.displayBlogs);
+router.get('/user', blogControler.userBlogs);
 router.delete('/:id',verifyUser, isAdmin, blogControler.deleteBlog)
 router.put('/:id',verifyUser, isAdmin, blogControler.editBlog)
 router.get('/:id', blogControler.singleBlog)
-router.post('/',verifyUser, blogControler.createBlog);
+router.post('/',verifyUser, blogControler.createBlog); 
 // router.post('/', upload.single('image'), blogControler.createBlog);
 
 export default router
