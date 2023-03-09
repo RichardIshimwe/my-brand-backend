@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "nodemon index.js",
-    "test": "jest --detectOpenHandles --forceExit",
+    "test": "node --experimental-vm-modules jest/bin/jest.js --verbose --runInBand --detectOpenHandles --forceExit",
     "coverage": "jest --coverage"
   },
   "author": "",

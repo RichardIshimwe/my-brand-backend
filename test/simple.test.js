@@ -8,3 +8,4 @@ import bcrypt from 'bcrypt';
           expect(1+1).toBe(2);
 })});
 // node --experimental-vm-modules jest/bin/jest.js --verbose --runInBand --forceExit
+// jest --detectOpenHandles --forceExit
