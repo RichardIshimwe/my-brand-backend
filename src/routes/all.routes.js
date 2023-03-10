@@ -16,7 +16,8 @@ const routes = express.Router();
 // routes.post('/test',(req, res) => res.status(200).json({message:"testing route"}));
 routes.use('/signup', signup);
 routes.use('/blogs', blogRoutes);
-routes.use('/message', verifyUser, message);
+routes.use('/message', message);
+// routes.use('/message', isAdmin , message);
 routes.use('/login', login);
 routes.use('/logout', logout);
 routes.use('/comment', verifyUser, comment)

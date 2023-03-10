@@ -5,6 +5,7 @@ import isAdmin from '../middlewares/isAdmin.middleware.js'
 const router = express.Router();
 
 router.post('/', message.sendMessage)
-router.get('/', isAdmin, message.displayMessage)
+router.get('/', message.displayMessage)
+// router.get('/', isAdmin, message.displayMessage)
 
 export default router
