@@ -106,9 +106,9 @@ class blogcontroler {
 
     static async editBlog(req, res) {
         try {
-            const { title, description } = req.body;
+            const { title, description, image } = req.body;
             const { id } = req.params;
-            const blogUpdated = await blog.findByIdAndUpdate({ _id: id }, { title, description }, { new: true });
+            const blogUpdated = await blog.findByIdAndUpdate({ _id: id }, { title, description, image }, { new: true });
             if (!blogUpdated) {
                 return response.error(res, 400, `the blog with id:${id} is not found.`)
             }
