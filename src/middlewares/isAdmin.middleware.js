@@ -8,7 +8,7 @@ const verifyUser = async (req, res, next) => {
     if(req.body.token) token = req.body.token;
     if(req.cookies.token) token = req.cookies.token;
     if (!token) {
-        return response.error(res, 401, "You have to login first")
+        return response.error(res, 401, "You have to login,first is required")
     }
     try {
         const check = jwt.verify(token, process.env.SECRET_KEY);
