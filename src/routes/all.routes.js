@@ -14,6 +14,7 @@ import blogControler from '../controllers/blog.controllers.js';
 const routes = express.Router();
 // routes.post('/test',(req, res) => res.status(200).json({message:"testing route"}));
 routes.use('/signup', signup);
+routes.get('/blogs/:id', blogControler.singleBlog)
 routes.get('/blogs', blogControler.displayBlogs);
 routes.use('/blogs', verifyUser, blogRoutes);
 routes.use('/message', message);
