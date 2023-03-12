@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "ncc build src/index.js -o dist",
-    "start": "nodemon ./src/index.js"
+    "start": "node ./src/index.js"
   },
   "author": "",
   "license": "ISC",

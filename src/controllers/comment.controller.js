@@ -20,6 +20,7 @@ class comment {
     const blogToComment = await blog.findByIdAndUpdate(_id, { $push: { comments: objectToPush } }, { new: true })
     response.success(res, 200, "blog found", blogToComment)
   }
+
 }
 
 export default comment
