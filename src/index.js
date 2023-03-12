@@ -14,7 +14,7 @@ const app = express();
 dotenv.config();
 // app.use(cors());
 app.use(cors({
-    origin: '*',
+    origin: 'http://localhost:5501',
     methods: 'GET,PUT,POST,DELETE',
     allowedHeaders: 'Content-Type,Authorization',
     credentials: true
