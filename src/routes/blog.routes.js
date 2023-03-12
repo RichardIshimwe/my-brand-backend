@@ -10,7 +10,11 @@ router.get('/user', blogControler.userBlogs);
 router.delete('/:id',verifyUser, isAdmin, blogControler.deleteBlog)
 router.put('/:id',verifyUser, blogControler.editBlog)
 router.get('/:id', blogControler.singleBlog)
-router.post('/', verifyUser, blogControler.createBlog); 
+router.post('/', blogControler.createBlog);
+// router.post('/', verifyUser, blogControler.createBlog);
+
+
+
 // router.post('/',verifyUser, blogControler.createBlog); 
 // router.post('/', upload.single('image'), blogControler.createBlog);
 

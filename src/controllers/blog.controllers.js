@@ -56,11 +56,11 @@ class blogcontroler {
     }
 
     static async createBlog(req, res) {
-        let token;
-        if(req.body.token) token = req.body.token;
-        if(req.cookies.token) token = req.cookies.token;
-        const decoded = jwt.verify(token, process.env.SECRET_KEY);
-        const { username } = decoded;
+        // let token;
+        // if(req.body.token) token = req.body.token;
+        // if(req.cookies.token) token = req.cookies.token;
+        // const decoded = jwt.verify(token, process.env.SECRET_KEY);
+        // const { username } = decoded;
         cloudinary.config({
             cloud_name: 'dkomkrwe2',
             api_key: '163417148236758',
