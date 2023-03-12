@@ -79,9 +79,7 @@ class blogcontroler {
                 if(err){
                  return console.log(err)
                 }
-            const  description = "description";
-            // const { title, description, image } = req.body
-            const { title } = req.body
+            const { title, description } = req.body
             const blogs = await blog.find();
             const newBlog = await blog.create({ author: "username", title, description,image:req.file.path })
             // const newBlog = await blog.create({ id, author: username, title, description,image })
