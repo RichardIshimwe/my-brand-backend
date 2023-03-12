@@ -11,14 +11,14 @@ import docs from './documentation/index.js'
 
 const app = express();
 
+app.use(cors());
+// app.use(cors({
+//     origin: 'http://localhost:5501',
+//     methods: 'GET,PUT,POST,DELETE',
+//     allowedHeaders: 'Content-Type,Authorization',
+//     credentials: true
+//   }));
 dotenv.config();
-// app.use(cors());
-app.use(cors({
-    origin: 'http://localhost:5501',
-    methods: 'GET,PUT,POST,DELETE',
-    allowedHeaders: 'Content-Type,Authorization',
-    credentials: true
-  }));
 app.use(cookieParser())
 app.use(bodyParser.json())
 app.get('/',(req, res) => response.success(res, 200,"welcome to the back-end of my project use /api-docs to get the swagger documentation "));
