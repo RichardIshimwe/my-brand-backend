@@ -71,7 +71,7 @@ class blogcontroler {
                 cloudinary,
                 params:{
                   folder: 'blogs-image',
-                  allowed_formats: ['jpg', 'png']
+                  allowed_formats: ['jpg', 'png', 'jpeg']
                 }
               });
             const upload = multer({ storage }).single('image');
