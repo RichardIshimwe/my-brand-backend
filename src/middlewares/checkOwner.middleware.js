@@ -3,7 +3,10 @@ import jwt from 'jsonwebtoken';
 import blog from '../models/blogs.model.js'
 
 const verifyUser = async (req, res, next) => {
-    const { token } = req.cookies;
+    // const { token } = req.cookies;
+    let token;
+    if(req.headers.authorization) token = req.headers.authorization;
+    if(req.cookies.token) token = req.cookies.token;
     if (!token) {
         return response.error(res, 401, "You have to login first")
     }
