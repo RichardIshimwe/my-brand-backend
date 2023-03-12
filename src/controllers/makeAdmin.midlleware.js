@@ -4,7 +4,8 @@ class makeadmin{
 static async makeAdmin(req, res){
     try {
     const { email } = req.body
-
+    
+     
      const findemail = await signup.findOneAndUpdate( {email},{admin: true},{new:true} )
      
         return response.success(res, 404, `${findemail.username} is now an admin.`,findemail)
