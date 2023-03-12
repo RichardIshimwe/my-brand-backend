@@ -11,16 +11,15 @@ import docs from './documentation/index.js'
 
 const app = express();
 
+dotenv.config();
+app.use(cors());
 app.use((req, res, next) => {
-    // res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Origin', 'header');
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    // res.setHeader('Access-Control-Allow-Origin', 'header');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     next();
 });
-
-dotenv.config();
-app.use(cors());
 app.use(cookieParser())
 app.use(bodyParser.json())
 app.get('/',(req, res) => response.success(res, 200,"welcome to the back-end of my project use /api-docs to get the swagger documentation "));
