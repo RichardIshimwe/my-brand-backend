@@ -10,8 +10,22 @@ import swaggerUi from 'swagger-ui-express';
 import docs from './documentation/index.js'
 
 const app = express();
-
-app.use(cors());
+const corsOpts = {
+    origin: '*',
+    
+    methods: [
+    'GET',
+    'POST',
+    'DELETE',
+    'PATCH'
+    ],
+    
+    allowedHeaders: [
+    'Content-Type',
+    'Authorization',
+    ],
+    };
+app.use(cors(corsOpts));
 // app.use(cors({
 //     origin: 'http://localhost:5501',
 //     methods: 'GET,PUT,POST,DELETE',
