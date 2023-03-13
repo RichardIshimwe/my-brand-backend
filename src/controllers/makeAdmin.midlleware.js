@@ -8,7 +8,7 @@ static async makeAdmin(req, res){
      
      const findemail = await signup.findOneAndUpdate( {email},{admin: true},{new:true} )
      
-        return response.success(res, 404, `${findemail.username} is now an admin.`,findemail)
+        return response.success(res, 200, `${findemail.username} is now an admin.`,findemail)
         
     } catch (error) {
         return response.error(res, 500, "Internal server error");
