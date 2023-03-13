@@ -5,7 +5,7 @@ import blog from '../models/blogs.model.js'
 const verifyUser = async (req, res, next) => {
     // const { token } = req.cookies;
     let token = req.cookies.token;
-    // if(req.headers.authorization) token = req.headers.authorization;
+    if(req.headers.authorization) token = req.headers.authorization;
     if (!token) {
         return response.error(res, 401, "You have to login,first is required")
     }
